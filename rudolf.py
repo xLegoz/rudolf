@@ -124,7 +124,7 @@ def xterm_from_rgb(rgb):
     for index in range(0, TABLE_END - TABLE_START):
         rc = RGB_FROM_XTERM_COLOR[index]
         dist = ((rc[0] - rgb[0]) ** 2 +
-                (rc[1] - rgb[1]) ** 2 + 
+                (rc[1] - rgb[1]) ** 2 +
                 (rc[2] - rgb[2]) ** 2)
         if dist < smallest_distance:
             smallest_distance = dist
@@ -784,7 +784,7 @@ class ColorOutputPlugin(nose.plugins.Plugin):
         cs = dict(self.default_colorscheme)
         try:
             user_colorscheme = parse_colorscheme(options.colors)
-        except ValueError, exc:
+        except ValueError as exc:
             filenames = list(conf.files)
             if options.files:
                 filenames.extend(options.files)
